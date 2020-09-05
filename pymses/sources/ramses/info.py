@@ -59,15 +59,14 @@ def read_ramses_info_file(info_filename):
 					bound_table = []
 					par_dict[par_name] = par_val.strip()
 		else:
-                        # Catch errors from poorly-formed lines in custom info files
-                        try:
-			        bound_table.append([float(params[2]), float(params[3])])
-			        params2 = re_head_bkey.split(params[2])
-			        params3 = re_tail_bkey.split(params2[1])
-			        nd = len(params3[0])
-                        except ValueError:
-                                pass
-
+			# Ignore any parameters added at the end
+			if not "=" in line:
+				params = list(filter(None,line.split(" ")))
+				bound_table.append([float(params[1]), float(params[2])])
+				params2 = re_head_bkey.split(params[2])
+				params3 = re_tail_bkey.split(params2[1])
+				nd = len(params3[0])
+			
 	info_dict["ncpu"] = int(par_dict["ncpu"])
 	info_dict["ndim"] = int(par_dict["ndim"])
 	info_dict["levelmin"] = int(par_dict["levelmin"])
