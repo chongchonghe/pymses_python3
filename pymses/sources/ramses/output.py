@@ -145,7 +145,8 @@ class RamsesOutput(object):#{{{
 		# Update variable description if the appropriate file is found :
 		try:
 			try:
-				f=open(filename_utils.output_path(output_repos, iout)+"/pymses_field_descrs.py")
+				#f=open(filename_utils.output_path(output_repos, iout)+"/pymses_field_descrs.py")
+                                f=open(output_repos+"/pymses_field_descrs.py")
 			except Exception:
 				f=open("./pymses_field_descrs.py")
 			code = f.read()

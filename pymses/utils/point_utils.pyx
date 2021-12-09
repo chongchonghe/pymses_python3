@@ -50,8 +50,8 @@ def meshgrid(coords_by_axis):#{{{
 			[ax.size for ax in coords_by_axis], 'i')
 	cdef long npoints = numpy.prod(shape)
 
-	cdef numpy.ndarray[long, ndim=1] nperiods = numpy.cumprod(shape) / shape
-	cdef numpy.ndarray[long, ndim=1] nrepeats = npoints/(nperiods * shape)
+	cdef numpy.ndarray[long, ndim=1] nperiods = numpy.cumprod(shape) // shape
+	cdef numpy.ndarray[long, ndim=1] nrepeats = npoints//(nperiods * shape)
 
 	# Output array
 	cdef numpy.ndarray[double, ndim=2] points = numpy.zeros([npoints, ndim])

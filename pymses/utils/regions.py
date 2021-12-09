@@ -76,7 +76,7 @@ class Region():#{{{
 		xmin, xmax = self.get_bounding_box()
 		delta = xmax - xmin
 		ndim = len(xmin)
-		nbatch = max(npoints/4, 1000)
+		nbatch = max(npoints//4, 1000)
 
 		shape = (nbatch, ndim)
 
@@ -86,12 +86,11 @@ class Region():#{{{
 			return filtered_pts
 
 		while npoints_out < npoints:
-			filtered_pts = self.filter_points(
-					numpy.random.uniform(size=shape, low=0, high=1)*delta + xmin)
-
-			npoints_out += filtered_pts.shape[0]
-			pt_list.append(filtered_pts)
-
+                        print(shape,delta,xmin)
+                        filtered_pts = self.filter_points(numpy.random.uniform(size=shape, low=0, high=1)*delta + xmin)
+                        npoints_out += filtered_pts.shape[0]
+                        pt_list.append(filtered_pts)
+                        
 		return numpy.concatenate(pt_list, axis=0)[:npoints, :]
 #}}}	
 
