@@ -82,7 +82,7 @@ def meshgrid(coords_by_axis):#{{{
 def corner_points(numpy.ndarray[double, ndim=2] points, numpy.ndarray[double, ndim=1] size):#{{{
 	cdef char npoints = points.shape[0]
 	cdef char ndim = points.shape[1]
-	cdef char twotondim = 2**ndim
+	cdef int twotondim = int(2**ndim)
 	cdef char ishift, idim, ipoint
 	cdef numpy.ndarray[double, ndim=2] corner_points = numpy.repeat(points, twotondim, axis=0)
 	cdef numpy.ndarray[double, ndim=1] xc = numpy.zeros(ndim)

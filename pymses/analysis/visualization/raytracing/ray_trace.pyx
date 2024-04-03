@@ -27,7 +27,7 @@ from pymses.sources.ramses.tree_utils import tree_search
 from pymses.analysis.visualization.transfer_functions import ColorLinesTransferFunction
 
 # Define integer and double precision float types + ctypes {{{
-INT_t = numpy.int
+INT_t = int
 ctypedef numpy.int_t cINT_t
 INT8_t = numpy.int8
 ctypedef numpy.int8_t cINT8_t

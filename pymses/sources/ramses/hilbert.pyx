@@ -26,7 +26,7 @@ cimport numpy
 cimport cython
 
 # Define integer types used for index arrays
-INT_t = numpy.int
+INT_t = int
 ctypedef numpy.int_t cINT_t
 
 CHAR_t = numpy.int8
